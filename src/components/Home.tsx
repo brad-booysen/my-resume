@@ -1,12 +1,31 @@
-import { Link } from "react-router-dom";
+import Jumbotron from "./Jumbotron";
+import WorkExperience from "./WorkExperience";
+import Education from "./Education";
+import Skills from "./Skills";
 
 function Home() {
     return (
-      <div>
-        <h1>This is the home page</h1>
-        <Link to="contact">Click to view our contact page</Link>
-      </div>
+        <>
+            <header className="bg-primary text-white py-5">
+                <Jumbotron />
+            </header>
+            <main className="container">
+                <div className="row">
+                    <div className="col-md mb-5">
+                        <WorkExperience />
+                    </div>
+                    <div className="col-md mb-5">
+                        <Education />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md mb-5">
+                        <Skills />
+                    </div>
+                </div>
+            </main>
+        </>
     );
-  }
-  
-  export default Home;
+}
+
+export default Home;

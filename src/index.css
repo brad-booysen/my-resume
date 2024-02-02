@@ -1,0 +1,21 @@
+p {
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    padding-top: 50px;
+}
+
+.navbar {
+    padding: 20px 20px 20px 20px;
+    font-size: x-large;
+}
+
+.navbar-brand {
+    font-size: x-large;
+}
