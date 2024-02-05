@@ -15,10 +15,6 @@ function WorkExperience() {
                     <h5 className="text-primary">iOS Developer & Product Manager  / Booysenberry 2018-Present</h5>
                     <p>Mauris volutpat, ex condimentum fringilla imperdiet, nulla turpis semper diam, ac semper risus urna quis libero. Fusce non nunc quam. Ut vulputate, magna eget molestie luctus, elit est posuere lorem, quis dapibus dolor felis id mi.</p>
                 </li>
-                <li>
-                    <h5 className="text-primary">CEO & Founder / Storkk  2013-2019</h5>
-                    <p>Sed eu turpis placerat, posuere odio a, viverra velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                </li>
             </ul>
         </>
     );

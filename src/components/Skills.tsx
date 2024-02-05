@@ -15,7 +15,7 @@ function Skills() {
     return (
         <>
             <h2 className="mb-5">Skills</h2>
-            <div className={classes.container}>
+            <div className={classes.skills}>
                 <ProgressBar now={swiftuiValue} label={`SwiftUI`} />
                 <ProgressBar now={gitValue} label={`Git`} />
                 <ProgressBar now={htmlValue} label={`HTML`} />
