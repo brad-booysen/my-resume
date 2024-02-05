@@ -1,27 +1,28 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import classes from './Contact.module.css'
 
-
 function Contact() {
 
-    const form = useRef();
+    const form = useRef<HTMLFormElement | null>(null);
 
-    const sendEmail = (e) => {
+    const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        emailjs
-            .sendForm('service_h2jbq2n', 'contact_form', form.current, {
-                publicKey: 'OHtvf-JlKYMh2O_43',
-            })
-            .then(
-                () => {
-                    console.log('SUCCESS!');
-                },
-                (error) => {
-                    console.log('FAILED...', error.text);
-                },
-            );
+        if (form.current) {
+            emailjs
+                .sendForm('service_h2jbq2n', 'contact_form', form.current, {
+                    publicKey: 'OHtvf-JlKYMh2O_43',
+                })
+                .then(
+                    () => {
+                        console.log('SUCCESS!');
+                    },
+                    (error) => {
+                        console.log('FAILED...', error.text);
+                    },
+                );
+        }
     };
 
     return (
