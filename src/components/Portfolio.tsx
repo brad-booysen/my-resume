@@ -7,16 +7,14 @@ function Portfolio() {
     const soloProjects = [
         {
             id: 1,
-            title: "Flexcavo",
-
+            title: "Storkk",
             description:
                 "It is the website for construction machine renting company (Flexcavo) from Berlin",
-            technologies: "React.js | Pixel-perfect | SCSS | Styled Component",
             link: "https://www.flexcavo.de/",
         },
         {
             id: 2,
-            title: "Meet Native",
+            title: "Flicks",
 
             description:
                 "MeetNative is an upselling platform that helps consumers and local businesses get more for their money.",
@@ -25,7 +23,7 @@ function Portfolio() {
         },
         {
             id: 3,
-            title: "Mob Inspire",
+            title: "Trip Tally",
 
             description:
                 "Mob Inspire streamlines the business operations in corporate sector by providing cost-effective and highly productive software solutions.",
@@ -64,12 +62,12 @@ function Portfolio() {
     return (
         <>
             <div className='container' id={classes.projects}>
-                <h1>Recent Work</h1>
+                <h1>My Recent Work</h1>
                 <div className={classes.projectcard}>
                     {soloProjects.map((project) => {
                         return (
                             <Card style={{ width: '18rem' }}>
-                                <Card.Img variant="top" src="holder.js/100px180" />
+                                <Card.Img variant="top" src="src/assets/mockup.png" />
                                 <Card.Body>
                                     <Card.Title>{project.title}</Card.Title>
                                     <Card.Text>{project.description}</Card.Text>

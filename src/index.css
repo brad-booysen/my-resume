@@ -1,9 +1,10 @@
 p {
-    font-size: large;
+    font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -18,4 +19,14 @@ main {
 
 .navbar-brand {
     font-size: x-large;
+}
+
+.progress {
+    height: 25px;
+    font-size: 16px;
+}
+
+.progress-bar {
+    text-align: left;
+    padding-left: 2%;
 }

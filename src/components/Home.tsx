@@ -6,7 +6,7 @@ import Skills from "./Skills";
 function Home() {
     return (
         <>
-            <header className="bg-primary text-white py-5">
+            <header className="bg-light text-muted py-5">
                 <Jumbotron />
             </header>
             <main className="container">
@@ -19,6 +19,9 @@ function Home() {
                     </div>
                 </div>
                 <div className="row">
+                    <div className="col-md mb-5">
+                        <Skills />
+                    </div>
                     <div className="col-md mb-5">
                         <Skills />
                     </div>
