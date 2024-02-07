@@ -1,12 +1,42 @@
-.projectcard {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    justify-content: space-around;
-    row-gap: 30px;
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
-#projects h1 {
+.details {
+    width: 60%;
+    height: auto;
+    
+}
+
+.image {
+    min-width: 300px;
+    width: 30%;
+    height: auto;
+}
+
+.image img {
+    height: 100%;
+    width: 100%;
+    border-radius: 2%;
+}
+
+#headline {
     text-align: center;
-    padding-top: 80px;
-    padding-bottom: 50px;
+}
+
+.intro {
+    padding-bottom: 5px;
+}
+
+.intro p {
+    text-align: center;
+}
+
+hr.divider {
+    border-top: 3px solid #bbb;
+    padding-bottom: 5px;
 }

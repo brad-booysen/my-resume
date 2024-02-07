@@ -1,6 +1,5 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import classes from "./Portfolio.module.css"
+import { Button } from "react-bootstrap";
 
 function Portfolio() {
 
@@ -9,77 +8,86 @@ function Portfolio() {
             id: 1,
             title: "Storkk",
             description:
-                "It is the website for construction machine renting company (Flexcavo) from Berlin",
-            link: "https://www.flexcavo.de/",
+                "Storkk simplifies the planning and tracking of Continuing Professional Development for the legal fraternity",
+            technologies: "C# | .NET | Azure",
+            link: "http://www.storkk.com",
         },
         {
             id: 2,
-            title: "Flicks",
+            title: "NightWatch",
 
             description:
-                "MeetNative is an upselling platform that helps consumers and local businesses get more for their money.",
-            technologies: "React | React Native | Android | iOS",
-            link: "https://meetnative.com/",
+                "NightWatch is a native iOS app that let's users easily track their sleep patterns, monitor their progress, and improve thier sleep quality.",
+            technologies: "SwiftUI | Swift | CoreData",
+            link: "https://apps.apple.com/dm/app/nightwatch-sleep-tracker/id6469570238",
         },
         {
             id: 3,
-            title: "Trip Tally",
+            title: "RecipeBot",
 
             description:
-                "Mob Inspire streamlines the business operations in corporate sector by providing cost-effective and highly productive software solutions.",
-            technologies: "Nginx | PHP | MySQL | jQuery",
-            link: "https://www.mobinspire.com/",
+                "RecipeBot is a native iOS app that utilises AI to create recipes based on ingredients that the user has at home.",
+            technologies: "SwiftUI | Swift | CoreData | OpenAI",
+            link: "https://apps.apple.com/dm/app/recipebot-ai-powered-recipes/id6470576790",
         },
         {
             id: 4,
-            title: "Raise",
+            title: "NetShield",
 
             description:
-                "Get started with free educational courses to mastery the foundations of startup equity as an African business.",
-            technologies: "Remix | React.js | Webflow | jQuery",
-            link: "https://www.raise.africa/",
+                "NetShield is a native iOS app that offers faster, safer, and more private web browsing. Users can block unwanted keywords, websites, and harmful content while enjoying the benefits of a private and secure VPN.",
+            technologies: "SwiftUI | Swift | CoreData | Firebase",
+            link: "https://apps.apple.com/dm/app/netshield-online-guardian/id6471444637",
         },
         {
             id: 5,
-            title: "Potsave",
+            title: "BodyBliss",
 
             description:
-                "Through the PotSave.com platform, PotSave offers in-person product assessment and ordering services, accessible via the website, mobile applications, and software.",
-            technologies: "React | Next.js | Lodash | Tailwind CSS",
-            link: "https://dev-pwa.potsave.com/",
-        },
-        {
-            id: 6,
-            title: "Health",
-
-            description:
-                "U of U Health is the Mountain West's only academic health care system. We provide patient care, medical research, and physician training.",
-            technologies: "Angular | Drupal | Nginx | TypeScript",
-            link: "https://healthcare.utah.edu/",
+                "BodyBliss is a native iOS app that provides a range of health and wellness related tools such as fitness and health tracking, mood tracking and meditation.",
+            technologies: "SwiftUI | Swift | CoreData | Firebase",
+            link: "https://apps.apple.com/dm/app/bodybliss-wellness-companion/id6471552539",
         },
     ];
 
     return (
-        <>
-            <div className='container' id={classes.projects}>
-                <h1>My Recent Work</h1>
-                <div className={classes.projectcard}>
-                    {soloProjects.map((project) => {
-                        return (
-                            <Card style={{ width: '18rem' }}>
-                                <Card.Img variant="top" src="src/assets/mockup.png" />
-                                <Card.Body>
-                                    <Card.Title>{project.title}</Card.Title>
-                                    <Card.Text>{project.description}</Card.Text>
-                                    <Button variant="primary">Go somewhere</Button>
-                                </Card.Body>
-                            </Card>
-                        )
-                    })}
-                </div>
+        <div className='container mt-5'>
+            <div className={classes.intro}>
+                <h2 className="mb-3" id={classes.headline}>Recent Projects</h2>
+                <p>Just a few of the projects I've worked on recently.</p>
             </div>
-        </>
+            <hr className={classes.divider} />
+            {soloProjects.map((project) => {
+                return (
+                    <>
+                        <div className={classes.projects}>
+                            <div className={classes.image}>
+                               
+
+                                <img src={`src/assets/${project.title}.jpg`}></img>
+
+                            </div>
+                            <div className={classes.details}>
+                                <div className='project-title'>
+                                    <h2>{project.title}</h2>
+                                </div>
+                                <div className='project-description'>
+                                    <p>{project.description}</p>
+                                </div>
+                                <div className='project-description'>
+                                    <p><strong>Tech stack:</strong> {project.technologies}</p>
+                                </div>
+                                <div className='button'>
+                                    <Button variant="success" href={project.link} target="_blank">Learn More</Button>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )
+            })}
+        </div>
     )
 }
 
 export default Portfolio
+

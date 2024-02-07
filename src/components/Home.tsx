@@ -2,6 +2,7 @@ import Jumbotron from "./Jumbotron";
 import WorkExperience from "./WorkExperience";
 import Education from "./Education";
 import Skills from "./Skills";
+import Projects from "./Projects";
 
 function Home() {
     return (
@@ -23,7 +24,7 @@ function Home() {
                         <Skills />
                     </div>
                     <div className="col-md mb-5">
-                        <Skills />
+                        <Projects />
                     </div>
                 </div>
             </main>
