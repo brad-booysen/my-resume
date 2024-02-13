@@ -4,7 +4,7 @@ import classes from './Contact.module.css'
 
 function Contact() {
 
-    const form = useRef<HTMLFormElement | null>(null);
+    const form = useRef<HTMLFormElement>(null);
 
     const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
