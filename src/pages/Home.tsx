@@ -8,16 +8,38 @@ import { useEffect, useState } from 'react'
 
 function Home() {
 
-    // Get user's IP address
     const [ipAddress, setIPAddress] = useState('')
+    const [userCount, setUserCount] = useState(0)
 
+    // Get the user's IP address
     useEffect(() => {
         fetch('https://api.ipify.org?format=json')
             .then(response => response.json())
-            .then(data => setIPAddress(data.ip))
+            .then(data => {
+                setIPAddress(data.ip)
+            })
             .catch(error => console.log(error))
     }, []);
 
+    // Get visitor count from AWS
+    useEffect(() => {
+        fetch('https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setUserCount(data.length)
+                console.log(data); // Handle the response data here
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    })
+
+    // Log the visit in AWS
     function logVisit() {
         const url = 'https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items';
         const data = { "id": ipAddress }
@@ -44,11 +66,6 @@ function Home() {
             .catch(error => {
                 console.error('Error:', error);
             });
-
-
-        // TODO get visitor count from api gateway
-        // const getVisitorCount = () => {
-
     }
 
     return (
@@ -76,7 +93,7 @@ function Home() {
                 <div>
                     <Button variant="primary" onClick={logVisit}>Primary</Button>{' '}
                 </div>
-                <div><h1>Your IP Address is: {ipAddress}</h1></div>
+                <div><h1>Visitor count: {userCount}</h1></div>
             </main>
         </>
     );
