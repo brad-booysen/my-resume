@@ -4,14 +4,23 @@ import Education from "../components/Education";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import { Button } from "react-bootstrap";
+import { useEffect, useState } from 'react'
 
 function Home() {
 
-    // TODO enable CORS
+    // Get user's IP address
+    const [ipAddress, setIPAddress] = useState('')
 
-    function invokeAWSFunction() {
+    useEffect(() => {
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => setIPAddress(data.ip))
+            .catch(error => console.log(error))
+    }, []);
+
+    function logVisit() {
         const url = 'https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items';
-        const data = { "id": "800" }
+        const data = { "id": ipAddress }
 
         const requestOptions = {
             method: 'PUT',
@@ -35,6 +44,11 @@ function Home() {
             .catch(error => {
                 console.error('Error:', error);
             });
+
+
+        // TODO get visitor count from api gateway
+        // const getVisitorCount = () => {
+
     }
 
     return (
@@ -60,8 +74,9 @@ function Home() {
                     </div>
                 </div>
                 <div>
-                    <Button variant="primary" onClick={invokeAWSFunction}>Primary</Button>{' '}
+                    <Button variant="primary" onClick={logVisit}>Primary</Button>{' '}
                 </div>
+                <div><h1>Your IP Address is: {ipAddress}</h1></div>
             </main>
         </>
     );
