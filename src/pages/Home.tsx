@@ -5,6 +5,7 @@ import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import { useEffect, useState } from 'react'
 import VisitorCounter from "../components/VisitorCounter";
+import Footer from "../components/Footer";
 
 function Home() {
 
@@ -84,9 +85,12 @@ function Home() {
                     </div>
                 </div>
                 <div className="row justify-content-center">
-                    <div className="col-md-6 text-center"> {/* Add text-center class */}
-                        <VisitorCounter hits={userCount}/>
+                    <div className="col-md-6 text-center">
+                        <VisitorCounter hits={userCount} />
                     </div>
+                </div>
+                <div className="row">
+                    <Footer />
                 </div>
             </main>
         </>
