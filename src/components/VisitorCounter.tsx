@@ -6,7 +6,6 @@ function VisitorCounter(props: { hits: number }) {
     return (
         <RetroHitCounter
             hits={props.hits}
-            /* The following are all default values: */
             withBorder={true}
             withGlow={false}
             minLength={4}
