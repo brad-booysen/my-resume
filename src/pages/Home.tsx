@@ -9,6 +9,9 @@ import Footer from "../components/Footer";
 
 function Home() {
 
+    const url = 'https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items'
+    const secretCode = 'x147949773dfc1837f8569apf1'
+    
     const [ipAddress, setIPAddress] = useState('')
     const [userCount, setUserCount] = useState(0)
 
@@ -22,14 +25,14 @@ function Home() {
             .catch(error => console.log(error))
     }, []);
 
-    // Log new visitor in AWS
+    // Log new ip address in AWS
     useEffect(() => {
-        const url = 'https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items';
         const data = { "id": ipAddress }
 
         const requestOptions = {
             method: 'PUT',
             headers: {
+                'Authorization': secretCode,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
@@ -49,7 +52,14 @@ function Home() {
 
     // Fetch visitor count from AWS
     useEffect(() => {
-        fetch('https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items')
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'Authorization': secretCode,
+            },
+        }
+
+        fetch(url, requestOptions)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok')
