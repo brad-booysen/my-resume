@@ -62,10 +62,10 @@ function Portfolio() {
                     <>
                         <div className={classes.projects}>
                             <div className={classes.image}>
-                                <img src={`/${project.title.toLowerCase()}.jpg`}></img>
+                                <img src={`/src/assets/${project.title.toLowerCase()}.jpg`}></img>
                             </div>
                             <div className={classes.details}>
-                                <div className="roject-title">
+                                <div className="project-title">
                                     <h2>{project.title}</h2>
                                 </div>
                                 <div className="project-description">

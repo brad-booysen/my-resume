@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 function Home() {
 
     const url = 'https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items'
-    const secretCode = 'x147949773dfc1837f8569apf1'
+    const apiKey = 'x147949773dfc1837f8569apf1'
     
     const [ipAddress, setIPAddress] = useState('')
     const [userCount, setUserCount] = useState(0)
@@ -32,7 +32,7 @@ function Home() {
         const requestOptions = {
             method: 'PUT',
             headers: {
-                'Authorization': secretCode,
+                'Authorization': apiKey,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
@@ -55,7 +55,7 @@ function Home() {
         const requestOptions = {
             method: 'GET',
             headers: {
-                'Authorization': secretCode,
+                'Authorization': apiKey,
             },
         }
 
