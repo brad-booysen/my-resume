@@ -1,3 +1,4 @@
+import axios from "axios";
 import Jumbotron from "../components/Jumbotron";
 import WorkExperience from "../components/WorkExperience";
 import Education from "../components/Education";
@@ -11,7 +12,7 @@ function Home() {
 
     const url = 'https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items'
     const apiKey = import.meta.env.VITE_API_KEY
-    
+
     const [ipAddress, setIPAddress] = useState('')
     const [userCount, setUserCount] = useState(0)
 
@@ -52,27 +53,21 @@ function Home() {
             .catch(error => console.log(error))
     }, [apiKey, ipAddress])
 
-    // Fetch visitor count from AWS
+    // Fetch visitor count from AWS via Proxy server
     useEffect(() => {
-
-        const requestOptions = {
+        const options = {
             method: 'GET',
-            headers: {
-                'Authorization': apiKey,
-            },
+            url: "http://localhost:3000",
         }
-        fetch(url, requestOptions)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok')
-                }
-                return response.json()
+
+        axios.request(options)
+            .then(function (response) {
+                setUserCount(response.data.length)
             })
-            .then(data => {
-                setUserCount(data.length)
+            .catch(function (error) {
+                console.error(error);
             })
-            .catch(error => console.log(error))
-    }, [apiKey])
+    }, [])
 
     return (
         <>
