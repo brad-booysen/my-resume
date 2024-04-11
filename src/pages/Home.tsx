@@ -10,13 +10,14 @@ import Footer from "../components/Footer";
 function Home() {
 
     const url = 'https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items'
-    const apiKey = 'x147949773dfc1837f8569apf1'
+    const apiKey = import.meta.env.VITE_API_KEY
     
     const [ipAddress, setIPAddress] = useState('')
     const [userCount, setUserCount] = useState(0)
 
     // Get the user's IP address
     useEffect(() => {
+
         fetch('https://api.ipify.org?format=json')
             .then(response => response.json())
             .then(data => {
@@ -27,6 +28,7 @@ function Home() {
 
     // Log new ip address in AWS
     useEffect(() => {
+
         const data = { "id": ipAddress }
 
         const requestOptions = {
@@ -48,17 +50,17 @@ function Home() {
                 console.log(data); // Log the parsed JSON data
             })
             .catch(error => console.log(error))
-    }, [ipAddress])
+    }, [apiKey, ipAddress])
 
     // Fetch visitor count from AWS
     useEffect(() => {
+
         const requestOptions = {
             method: 'GET',
             headers: {
                 'Authorization': apiKey,
             },
         }
-
         fetch(url, requestOptions)
             .then(response => {
                 if (!response.ok) {
@@ -70,7 +72,7 @@ function Home() {
                 setUserCount(data.length)
             })
             .catch(error => console.log(error))
-    }, [])
+    }, [apiKey])
 
     return (
         <>
