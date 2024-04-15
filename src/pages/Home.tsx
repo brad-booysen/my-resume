@@ -57,7 +57,7 @@ function Home() {
     useEffect(() => {
         const options = {
             method: 'GET',
-            url: "http://localhost:3000",
+            url: "http://localhost:3000/vistor-count",
         }
 
         axios.request(options)

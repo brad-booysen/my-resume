@@ -19,7 +19,7 @@ const url = 'https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items'
 const apiKey = "x147949773dfc1837f8569apf1"
 
 // API requests
-app.get('/', (req, res) => {
+app.get('/vistor-count', (req, res) => {
     const requestOptions = {
         method: 'GET',
         url: url,
