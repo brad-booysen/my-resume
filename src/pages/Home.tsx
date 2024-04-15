@@ -10,8 +10,8 @@ import Footer from "../components/Footer";
 
 function Home() {
 
-    const url = 'https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items'
-    const apiKey = import.meta.env.VITE_API_KEY
+    // const url = 'https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items'
+    // const apiKey = import.meta.env.VITE_API_KEY
 
     const [ipAddress, setIPAddress] = useState('')
     const [userCount, setUserCount] = useState(0)
@@ -27,31 +27,21 @@ function Home() {
             .catch(error => console.log(error))
     }, []);
 
-    // Log new ip address in AWS
+    // Log new visitor
     useEffect(() => {
-
-        const data = { "id": ipAddress }
-
-        const requestOptions = {
+        const options = {
             method: 'PUT',
-            headers: {
-                'Authorization': apiKey,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
+            url: "http://localhost:3000/sendData",
         }
-        fetch(url, requestOptions)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok')
-                }
-                return response.json()
+
+        axios.request(options)
+            .then(function (response) {
+                console.log(response)
             })
-            .then(data => {
-                console.log(data); // Log the parsed JSON data
+            .catch(function (error) {
+                console.error(error);
             })
-            .catch(error => console.log(error))
-    }, [apiKey, ipAddress])
+    }, [])
 
     // Fetch visitor count from AWS via Proxy server
     useEffect(() => {
