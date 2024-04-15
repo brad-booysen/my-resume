@@ -31,7 +31,8 @@ function Home() {
     useEffect(() => {
         const options = {
             method: 'PUT',
-            url: "http://localhost:3000/sendData",
+            url: "http://localhost:3000/send-data",
+            data: { "id": ipAddress },
         }
 
         axios.request(options)
@@ -41,7 +42,7 @@ function Home() {
             .catch(function (error) {
                 console.error(error);
             })
-    }, [])
+    }, [ipAddress])
 
     // Fetch visitor count from AWS via Proxy server
     useEffect(() => {
