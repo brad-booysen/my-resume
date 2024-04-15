@@ -10,45 +10,34 @@ import Footer from "../components/Footer";
 
 function Home() {
 
-    // const url = 'https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items'
-    // const apiKey = import.meta.env.VITE_API_KEY
-
-    const [ipAddress, setIPAddress] = useState('')
     const [userCount, setUserCount] = useState(0)
 
     // Get the user's IP address
     useEffect(() => {
-
         fetch('https://api.ipify.org?format=json')
             .then(response => response.json())
             .then(data => {
-                setIPAddress(data.ip)
+                logNewVisit(data.ip) // Log new visit in db
             })
             .catch(error => console.log(error))
     }, []);
 
-    // Log new visitor
-    useEffect(() => {
-        axios({
-            method: 'PUT',
-            url: "http://localhost:3000/send-data",
-            data: { "id": ipAddress },
-          })
-            .then(function (response) {
-                console.log(response)
-            })
-            .catch(function (error) {
-                console.error(error);
-            })
-    }, [ipAddress])
+    // Log new visit in db via proxy server
+    async function logNewVisit(ipAddress: string) {
+        try {
+            const response = await axios.put("http://localhost:3000/send-data", { "id": ipAddress });
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+      }
 
-    // Fetch visitor count from AWS via Proxy server
+    // Fetch visitor count from db via proxy server
     useEffect(() => {
         const options = {
             method: 'GET',
             url: "http://localhost:3000/vistor-count",
         }
-
         axios.request(options)
             .then(function (response) {
                 setUserCount(response.data.length)
