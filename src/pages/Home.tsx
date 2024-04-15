@@ -30,7 +30,7 @@ function Home() {
         } catch (error) {
             console.error(error);
         }
-      }
+    }
 
     // Fetch visitor count from db via proxy server
     useEffect(() => {

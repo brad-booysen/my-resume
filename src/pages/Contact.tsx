@@ -1,10 +1,10 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import classes from './Contact.module.css'
+import classes from './Contact.module.css';
 
 function Contact() {
-
     const form = useRef<HTMLFormElement>(null);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -16,6 +16,7 @@ function Contact() {
                 })
                 .then(
                     () => {
+                        setIsSubmitted(true); // Set isSubmitted to true after successful submission
                         console.log('SUCCESS!');
                     },
                     (error) => {
@@ -26,25 +27,31 @@ function Contact() {
     };
 
     return (
-        <div className='container mt-5' id={classes.form}>
+        <div className={`container mt-5 ${classes.formContainer}`}>
             <h2 className="mb-3">Contact Me</h2>
-            <form ref={form} onSubmit={sendEmail}>
-                <div className="mb-3">
-                    <label htmlFor="user_name" className="form-label">Name</label>
-                    <input type="text" className="form-control" id="user_name" name="user_name" />
+            {isSubmitted ? (
+                <div className="alert alert-success" role="alert">
+                    Thank you for contacting me! I'll be in touch soon.
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="user_email" className="form-label">Email</label>
-                    <input type="email" className="form-control" id="user_email" name="user_email" />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="message" className="form-label">Message</label>
-                    <textarea className="form-control" id="message" name="message" rows={3} />
-                </div>
-                <button type="submit" className="btn btn-success">Send</button>
-            </form>
+            ) : (
+                <form ref={form} onSubmit={sendEmail}>
+                    <div className="mb-3">
+                        <label htmlFor="user_name" className="form-label">Name</label>
+                        <input type="text" className="form-control" id="user_name" name="user_name" />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="user_email" className="form-label">Email</label>
+                        <input type="email" className="form-control" id="user_email" name="user_email" />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="message" className="form-label">Message</label>
+                        <textarea className="form-control" id="message" name="message" rows={3} />
+                    </div>
+                    <button type="submit" className="btn btn-success">Send</button>
+                </form>
+            )}
         </div>
     );
 }
 
-export default Contact
+export default Contact;
