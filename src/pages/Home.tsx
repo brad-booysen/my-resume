@@ -29,13 +29,11 @@ function Home() {
 
     // Log new visitor
     useEffect(() => {
-        const options = {
+        axios({
             method: 'PUT',
             url: "http://localhost:3000/send-data",
             data: { "id": ipAddress },
-        }
-
-        axios.request(options)
+          })
             .then(function (response) {
                 console.log(response)
             })

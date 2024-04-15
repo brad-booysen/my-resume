@@ -35,29 +35,25 @@ app.get('/vistor-count', (req, res) => {
 })
 
 // Log new visitor in db
-app.put('/send-data', async (req, res) => {
+app.put('/send-data', (req, res) => {
 
-    try {
-        // Data to send
-        const dataToSend = {
-            id: '123.456.78.39'
-        };
+    console.log(req)
+    // Data to send
+    const dataToSend = {
+        id: '123.456.78.39'
+    };
 
-        // Config for Axios request
-        const config = {
-            headers: {
-                'Authorization': apiKey,
-                'Content-Type': 'application/json',
-            }
-        };
+    const config = {
+        headers: {
+            'Authorization': apiKey,
+            'Content-Type': 'application/json',
+        }
+    };
 
-        // Sending the PUT request using Axios
-        const response = await axios.put('https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items', dataToSend, config);
-
-        // Respond with the data from the API
-        res.json(response.data);
-    } catch (error) {
-        // If an error occurs, respond with the error message
-        res.status(500).json({ error: error.message });
-    }
+    axios.put('https://q3xubdzzt8.execute-api.us-east-1.amazonaws.com/items', dataToSend, config)
+        .then(function (response) {
+            res.json(response.data);
+        }).catch(function (error) {
+            console.error(error);
+        });
 });
