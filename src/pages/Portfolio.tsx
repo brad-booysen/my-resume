@@ -65,16 +65,16 @@ function Portfolio() {
                                 <img src={`/${project.title.toLowerCase()}.jpg`}></img>
                             </div>
                             <div className={classes.details}>
-                                <div className='project-title'>
+                                <div className="project-title">
                                     <h2>{project.title}</h2>
                                 </div>
-                                <div className='project-description'>
+                                <div className="project-description">
                                     <p>{project.description}</p>
                                 </div>
-                                <div className='project-description'>
+                                <div className="project-description">
                                     <p><strong>Tech stack:</strong> {project.technologies}</p>
                                 </div>
-                                <div className='button'>
+                                <div className="button">
                                     <Button variant="success" href={project.link} target="_blank">Learn More</Button>
                                 </div>
                             </div>
