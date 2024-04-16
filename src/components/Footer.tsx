@@ -4,7 +4,7 @@ function Footer() {
 
     return (
         <>
-            <div className="container-fluid text-center">
+            <div className="container-fluid text-center" >
                 <SocialLinks />
             </div>
             <div className="footer-copyright text-center py-3">

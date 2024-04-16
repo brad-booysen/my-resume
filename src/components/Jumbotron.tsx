@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import profilePhoto from "/src/assets/profile-photo.jpg";
+import profilePhoto from "/public/profile-photo.jpg";
 import { useNavigate } from "react-router-dom";
 
 function Jumbotron() {

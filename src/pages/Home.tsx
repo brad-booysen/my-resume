@@ -6,7 +6,6 @@ import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import { useEffect, useState } from 'react'
 import VisitorCounter from "../components/VisitorCounter";
-import Footer from "../components/Footer";
 
 function Home() {
 
@@ -73,9 +72,6 @@ function Home() {
                     <div className="col-md-6 text-center">
                         <VisitorCounter hits={userCount} />
                     </div>
-                </div>
-                <div className="row">
-                    <Footer />
                 </div>
             </main>
         </>
