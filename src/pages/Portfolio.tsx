@@ -51,37 +51,26 @@ function Portfolio() {
     ];
 
     return (
-        <div className='container mt-5'>
+        <div className="container">
             <div className={classes.intro}>
-                <h2 className="mb-3" id={classes.headline}>Recent Projects</h2>
+                <h2 className="mt-5" id={classes.headline}>Recent Projects</h2>
                 <p>Just a few of the projects I've worked on recently.</p>
             </div>
-            <hr className={classes.divider} />
-            {soloProjects.map((project) => {
-                return (
-                    <>
-                        <div className={classes.projects}>
-                            <div className={classes.image}>
-                                <img src={`/${project.title.toLowerCase()}.jpg`}></img>
-                            </div>
-                            <div className={classes.details}>
-                                <div className="project-title">
-                                    <h2>{project.title}</h2>
-                                </div>
-                                <div className="project-description">
-                                    <p>{project.description}</p>
-                                </div>
-                                <div className="project-description">
-                                    <p><strong>Tech stack:</strong> {project.technologies}</p>
-                                </div>
-                                <div className="button">
-                                    <Button variant="success" href={project.link} target="_blank">Learn More</Button>
-                                </div>
+            <div className="row">
+                {soloProjects.map((project) => (
+                    <div className="col-lg-4 col-md-6 mb-4" key={project.id}>
+                        <div className={classes.project}>
+                            <img src={`/${project.title.toLowerCase()}.jpg`} alt={project.title} className="img-fluid" />
+                            <div className={classes.content}>
+                                <h3>{project.title}</h3>
+                                <p>{project.description}</p>
+                                <p><strong>Tech stack:</strong> {project.technologies}</p>
+                                <Button variant="success" href={project.link}>{"Learn more"}</Button>
                             </div>
                         </div>
-                    </>
-                )
-            })}
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

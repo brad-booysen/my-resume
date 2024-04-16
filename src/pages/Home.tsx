@@ -53,18 +53,18 @@ function Home() {
             </header>
             <main className="container">
                 <div className="row">
-                    <div className="col-md mb-5">
+                    <div className="col-md-6 mb-5">
                         <WorkExperience />
                     </div>
-                    <div className="col-md mb-5">
+                    <div className="col-md-6 mb-5">
                         <Education />
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md mb-5">
+                    <div className="col-md-6 mb-5">
                         <Skills />
                     </div>
-                    <div className="col-md mb-5">
+                    <div className="col-md-6 mb-5">
                         <Projects />
                     </div>
                 </div>

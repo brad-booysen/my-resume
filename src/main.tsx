@@ -7,8 +7,12 @@ import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
-    <TopNavBar />
-    <App />
-    <Footer />
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+          <TopNavBar />
+          <div style={{ flex: '1' }}>
+              <App />
+          </div>
+          <Footer />
+      </div>
   </BrowserRouter>,
 )
